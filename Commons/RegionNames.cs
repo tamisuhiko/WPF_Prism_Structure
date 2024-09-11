@@ -13,10 +13,10 @@ namespace WPFStructure.Commons
         //Window Region
         public const string MainRegion = "MainRegion";
         //Sub Region
-        public static class Views
-        {
-            public const string HomeView = "HomeView";
-        }
-
     }
+    public static class RegionViews
+    {
+        public const string HomeView = "HomeView";
+    }
+
 }

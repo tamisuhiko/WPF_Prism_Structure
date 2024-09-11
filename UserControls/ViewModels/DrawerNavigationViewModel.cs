@@ -38,7 +38,7 @@ namespace WPFStructure.UserControls.ViewModels
 
         public void OnInitialized()
         {
-            _regionManager.RequestNavigate("DrawerNavigation", RegionNames.Views.HomeView);
+            _regionManager.RequestNavigate("DrawerNavigation", WPFStructure.Commons.RegionViews.HomeView);
         }
 
         private void OnNavigate(string viewName)

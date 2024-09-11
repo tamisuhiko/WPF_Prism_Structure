@@ -54,7 +54,7 @@
             </syncfusion:NavigationItem.Icon>
             <syncfusion:NavigationItem Header="Primary"
                                        Command="{Binding NavigateCommand}"
-                                       CommandParameter="HomeView">
+                                       CommandParameter="{x:Static Commons:RegionViews.HomeView}">
                 <syncfusion:NavigationItem.Icon>
                     <Path Data="{StaticResource Primary}"
                           Style="{StaticResource NavigationItemPathStyle}" />
