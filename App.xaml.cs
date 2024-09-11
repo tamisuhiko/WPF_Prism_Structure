@@ -1,4 +1,5 @@
-﻿using Prism.Ioc;
+﻿using Helpers.Commons;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System.Windows;
 using WPFStructure.Services;
@@ -14,6 +15,12 @@ namespace WPFStructure
     /// </summary>
     public partial class App
     {
+        public App()
+        {
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(SyncFuctionKeyGenerator.GenerateBase64LicenseKey());
+            //Key for Syncfuction
+        }
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
@@ -21,9 +28,14 @@ namespace WPFStructure
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
+
+            //Register for view
+            containerRegistry.RegisterForNavigation<ContainerView, ContainerViewModel>();
+            containerRegistry.RegisterForNavigation<HomeView,HomeViewModel>();
+            containerRegistry.RegisterForNavigation<SettingView, SettingViewModel>();
 
 
+            //Commons
             containerRegistry.RegisterSingleton<ISharedService, SharedService>();
 
 

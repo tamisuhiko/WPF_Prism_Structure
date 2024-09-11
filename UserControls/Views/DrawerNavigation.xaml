@@ -4,9 +4,9 @@
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
          xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+         xmlns:Commons="clr-namespace:WPFStructure.Commons"
          xmlns:prism="http://prismlibrary.com/"
          prism:ViewModelLocator.AutoWireViewModel="True"
-         xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
          mc:Ignorable="d">
     <Control.Resources>
         <Geometry x:Key="Inbox">M32.032381, 16.445429 L25.410999, 23 22.598995, 23 15.853724, 16.561278 3.4150009, 29 44.586115, 29z M2.0000003, 3.3371553 L2.0000003, 27.587 14.406845, 15.180154z M46.000002, 2.6187388 L33.45355, 15.038597 46.000002, 27.585888z M3.4950623, 2.0000003 L23.399998, 21 24.589001, 21 43.782564, 2.0000003z M0, 0 L48.000002, 0 48.000002, 31 0, 31z</Geometry>
@@ -21,86 +21,108 @@
         <Geometry x:Key="Trash">M17,12 L19,12 19,42 17,42z M10.998,11.933997 L12.998014,41.934002 11.002,42.067001 9.0019855,12.066998z M25.002001,10.935999 L26.998014,11.064999 24.997999,42.065002 23.001986,41.936001z M4.0514956,7.9999995 L5.9510078,46 30.048996,46 31.948509,7.9999995z M13,2.0000002 C11.897,2 11,2.8959999 11,3.9999998 L11,6 25,6 25,3.9999998 C25,2.8959999 24.103001,2 23,2.0000002z M13,0 L23,0 C25.205999,0 27,1.7950001 27,3.9999998 L27,6 36,6 36,7.9999995 33.951481,7.9999995 31.950994,48 4.0490093,48 2.048521,7.9999995 0,7.9999995 0,6 9,6 9,3.9999998 C9,1.7950001 10.794,0 13,0z</Geometry>
         <Geometry x:Key="Spam">M33.671003,29.293001 L39.214003,34.835998 44.757002,29.293001 46.171,30.707 40.628,36.25 46.171,41.792999 44.757002,43.207 39.214003,37.664001 33.671003,43.207 32.257002,41.792999 37.800001,36.25 32.257002,30.707z M38.964003,24 C32.347002,24 26.964003,29.382999 26.964003,36 26.964003,42.617 32.347002,48 38.964003,48 45.581003,48 50.964003,42.617 50.964003,36 50.964003,29.382999 45.581003,24 38.964003,24z M38.964003,22 C46.684,22 52.964003,28.28 52.964003,36 52.964003,43.720001 46.684,50 38.964003,50 31.244001,50 24.964003,43.720001 24.964003,36 24.964003,28.28 31.244001,22 38.964003,22z M3.9279995,2 L18.473,22 25.454998,22 39.999994,2z M0,0 L43.927996,0 26.964003,23.324888 26.964003,25.452001 C26.203001,26.317001 25.527002,27.257 24.964003,28.271002 L24.964003,24 18.964003,24 18.964003,41.446003 24.964003,45.196003 24.964003,43.729004 C25.526001,44.744003 26.203001,45.683002 26.964003,46.548004 L26.964003,48.805004 16.964003,42.555004 16.964003,23.324899z</Geometry>
 
-        <Style x:Key="NavigationItemPathStyle" TargetType="Path">
-            <Setter Property="Width" Value="16" />
-            <Setter Property="Height" Value="16" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Stretch" Value="Fill" />
-            <Setter Property="Fill" Value="White" />
+        <Style x:Key="NavigationItemPathStyle"
+               TargetType="Path">
+            <Setter Property="Width"
+                    Value="16" />
+            <Setter Property="Height"
+                    Value="16" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Stretch"
+                    Value="Fill" />
+            <Setter Property="Fill"
+                    Value="White" />
         </Style>
 
     </Control.Resources>
-
-    <syncfusion:SfNavigationDrawer x:Name="navigationDrawer" DisplayMode="Expanded" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <syncfusion:NavigationItem
-     Header="Inbox"
-     IsExpanded="True"
-     IsSelected="True">
+  
+    <syncfusion:SfNavigationDrawer x:Name="navigationDrawer"
+                                   DisplayMode="Expanded">
+        <syncfusion:NavigationItem Header="Inbox"
+                                   IsExpanded="True"
+                                   IsSelected="True">
             <syncfusion:NavigationItem.Icon>
-                <Path
-             Width="16"
-             Height="13"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center"
-             Data="{StaticResource Inbox}"
-             Stretch="Fill" />
+                <Path Width="16"
+                      Height="13"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="{StaticResource Inbox}"
+                      Stretch="Fill" />
             </syncfusion:NavigationItem.Icon>
-            <syncfusion:NavigationItem Header="Primary" Command="{Binding NavigateCommand}">
+            <syncfusion:NavigationItem Header="Primary"
+                                       Command="{Binding NavigateCommand}"
+                                       CommandParameter="HomeView">
                 <syncfusion:NavigationItem.Icon>
-                    <Path Data="{StaticResource Primary}" Style="{StaticResource NavigationItemPathStyle}" />
+                    <Path Data="{StaticResource Primary}"
+                          Style="{StaticResource NavigationItemPathStyle}" />
                 </syncfusion:NavigationItem.Icon>
             </syncfusion:NavigationItem>
-            <syncfusion:NavigationItem Header="Social">
+            <syncfusion:NavigationItem Header="Social"
+                                       Command="{Binding NavigateCommand}"
+                                       CommandParameter="SettingView">
                 <syncfusion:NavigationItem.Icon>
-                    <Path Data="{StaticResource Social}" Style="{StaticResource NavigationItemPathStyle}" />
+                    <Path Data="{StaticResource Social}"
+                          Style="{StaticResource NavigationItemPathStyle}" />
                 </syncfusion:NavigationItem.Icon>
             </syncfusion:NavigationItem>
             <syncfusion:NavigationItem Header="Promotions">
                 <syncfusion:NavigationItem.Icon>
-                    <Path Data="{StaticResource Promotions}" Style="{StaticResource NavigationItemPathStyle}" />
+                    <Path Data="{StaticResource Promotions}"
+                          Style="{StaticResource NavigationItemPathStyle}" />
                 </syncfusion:NavigationItem.Icon>
             </syncfusion:NavigationItem>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="Sent mail">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource SentMail}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource SentMail}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="Important">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource Important}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource Important}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="Drafts">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource Drafts}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource Drafts}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem ItemType="Separator" />
-        <syncfusion:NavigationItem Header="All Labels" ItemType="Header" />
+        <syncfusion:NavigationItem Header="All Labels"
+                                   ItemType="Header" />
         <syncfusion:NavigationItem Header="Starred">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource Starred}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource Starred}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="All mail">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource AllMail}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource AllMail}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="Trash">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource Trash}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource Trash}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:NavigationItem Header="Spam">
             <syncfusion:NavigationItem.Icon>
-                <Path Data="{StaticResource Spam}" Style="{StaticResource NavigationItemPathStyle}" />
+                <Path Data="{StaticResource Spam}"
+                      Style="{StaticResource NavigationItemPathStyle}" />
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
         <syncfusion:SfNavigationDrawer.ContentView>
-            <ContentControl prism:RegionManager.RegionName="MainView"/>
+            <ContentControl x:Name="_drawerContent"
+                            Content="ContentView" />
         </syncfusion:SfNavigationDrawer.ContentView>
     </syncfusion:SfNavigationDrawer>
 </UserControl>

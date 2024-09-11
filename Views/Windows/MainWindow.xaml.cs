@@ -1,31 +1,30 @@
-﻿using Prism.Regions;
-using Syncfusion.UI.Xaml.NavigationDrawer;
+﻿using Prism.Events;
+using Prism.Regions;
 using Syncfusion.Windows.Shared;
 using System.Windows;
-using System.Windows.Controls;
-using WPFStructure.UserControls.ViewModels;
 using WPFStructure.ViewModels;
 
-namespace WPFStructure.UserControls.Views
+namespace WPFStructure.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DrawerNavigation : UserControl
+    public partial class MainWindow : ChromelessWindow
     {
-        public DrawerNavigation()
+        public MainWindow()
         {
             InitializeComponent();
             Loaded += OnInitialized;
+
         }
 
         private void OnInitialized(object sender, RoutedEventArgs e)
         {
-            if (DataContext is DrawerNavigationViewModel viewModel)
+            if (DataContext is MainWindowViewModel viewModel)
             {
-                viewModel.DrawerContentControl = _drawerContent;
                 viewModel.OnInitialized();
             }
         }
+
     }
 }
