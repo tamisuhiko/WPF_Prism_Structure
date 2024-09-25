@@ -32,32 +32,27 @@ namespace WPFStructure.UserControls.ViewModels
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
 
-            NavigateCommand = new DelegateCommand<string>(OnNavigate);
+            NavigateCommand = new DelegateCommand<string>(NavigateTo);
 
         }
 
         public void OnInitialized()
         {
-            _regionManager.RequestNavigate("DrawerNavigation", WPFStructure.Commons.RegionViews.HomeView);
+            NavigateTo(WPFStructure.Commons.RegionViews.HomeView);
         }
 
-        private void OnNavigate(string viewName)
+        private void NavigateTo(string viewName)
         {
-            string viewPath = "WPFStructure.Views." + viewName; // Tên đầy đủ của View
+            string viewPath = "WPFStructure.Views." + viewName;
             Type viewType = Type.GetType(viewPath);
 
-            if (viewType != null)
+            if (viewType != null && DrawerContentControl.Content.GetType().Name.ToLower() != viewName.ToLower())
             {
                 var viewInstance = Activator.CreateInstance(viewType) as UserControl;
                 if (viewInstance != null)
                 {
-                    // Giả sử bạn có một Grid hoặc ContentControl để chứa View này
                     DrawerContentControl.Content = viewInstance;
                 }
-            }
-            else
-            {
-                MessageBox.Show("View not found.");
             }
 
         }

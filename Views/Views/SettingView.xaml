@@ -4,7 +4,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:prism="http://prismlibrary.com/">
     <Grid>
-        <TextBlock Text="View 2"
+        <TextBlock Text="{Binding Title}"
                    FontSize="24"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center" />

@@ -62,7 +62,7 @@
             </syncfusion:NavigationItem>
             <syncfusion:NavigationItem Header="Social"
                                        Command="{Binding NavigateCommand}"
-                                       CommandParameter="SettingView">
+                                       CommandParameter="{x:Static Commons:RegionViews.SettingView}">
                 <syncfusion:NavigationItem.Icon>
                     <Path Data="{StaticResource Social}"
                           Style="{StaticResource NavigationItemPathStyle}" />

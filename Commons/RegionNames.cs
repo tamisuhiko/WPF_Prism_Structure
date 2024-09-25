@@ -17,6 +17,7 @@ namespace WPFStructure.Commons
     public static class RegionViews
     {
         public const string HomeView = "HomeView";
+        public const string SettingView = "SettingView";
     }
 
 }
