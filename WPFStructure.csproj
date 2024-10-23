@@ -16,7 +16,4 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Helpers\Helpers.csproj" />
-  </ItemGroup>
 </Project>
